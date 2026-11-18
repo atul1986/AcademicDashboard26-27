@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
 <title>Academic Dashboard 2026-27 · SoE ADYPU</title>
 <link rel="icon" href="https://adypu.edu.in/wp-content/uploads/2023/03/cropped-favicon-1-270x270.png">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
@@ -14,231 +15,299 @@
 *{box-sizing:border-box}[hidden]{display:none!important}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
-button{font:inherit;color:inherit}
-.top{background:var(--ink);color:#eef0fa;position:relative;overflow:hidden}
-.top::before{content:"";position:absolute;inset:0;background-image:linear-gradient(#ffffff0a 1px,transparent 1px),linear-gradient(90deg,#ffffff0a 1px,transparent 1px);background-size:30px 30px}
-.top-in{max-width:1240px;margin:0 auto;padding:22px 22px 70px;position:relative}
-.bar{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-.logo{background:#fff;border-radius:12px;padding:6px 10px;display:flex;align-items:center;min-height:48px}
-.logo img{height:36px;display:block}
+button,input{font:inherit;color:inherit}
+.logo{background:#fff;border-radius:12px;padding:6px 10px;display:inline-flex;align-items:center;min-height:46px}
+.logo img{height:34px;display:block}
 .logo span{font-family:var(--head);font-weight:700;color:var(--brand)}
-.bar .t b{display:block;font-family:var(--head);font-size:16px}
-.bar .t small{opacity:.65;font-size:12.5px}
-.grow{flex:1}
-.chipb{border:1px solid #ffffff2a;background:#ffffff14;color:#fff;border-radius:11px;padding:9px 13px;cursor:pointer;font-weight:600;font-size:13px;display:inline-flex;gap:7px;align-items:center}
-.clock{font-family:var(--mono);font-size:13px;opacity:.8}
-h1{font-family:var(--head);font-size:clamp(30px,4.6vw,50px);letter-spacing:-1.2px;margin:30px 0 8px;line-height:1.05}
-h1 span{background:var(--lime);color:#11160a;padding:0 10px;border-radius:12px;display:inline-block;transform:rotate(-1.2deg)}
-.sub{opacity:.75;margin:0;max-width:640px;line-height:1.55}
-.totals{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}
-.tot{background:#ffffff12;border:1px solid #ffffff22;border-radius:14px;padding:10px 16px;min-width:140px}
-.tot b{display:block;font-family:var(--head);font-size:28px}
-.tot small{opacity:.7;font-size:12px}
 
-.wrap{max-width:1240px;margin:-46px auto 0;padding:0 22px 50px;position:relative}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-@media(max-width:960px){.grid{grid-template-columns:1fr}}
-.card{background:var(--paper);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);overflow:hidden}
-.ch{padding:18px 20px;display:flex;gap:12px;align-items:flex-start;border-bottom:1px solid var(--line)}
-.ico{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;font-size:22px;flex:none}
-.ch h2{font-family:var(--head);margin:0;font-size:20px;letter-spacing:-.4px}
-.ch p{margin:2px 0 0;color:var(--muted);font-size:13px}
-.status{margin-left:auto;font-size:12px;font-weight:700;border-radius:999px;padding:5px 10px;white-space:nowrap;display:inline-flex;gap:6px;align-items:center;background:var(--bg);color:var(--muted)}
-.status i{width:8px;height:8px;border-radius:50%;background:var(--muted)}
-.status.on{background:#e3f7ef;color:#0a7a50}.status.on i{background:var(--ok);box-shadow:0 0 0 3px #0fa36b33}
-.status.off{background:#ffe9e5;color:#b2371c}.status.off i{background:var(--err)}
-[data-theme=dark] .status.on{background:#0e3d2c;color:#9df0c9}[data-theme=dark] .status.off{background:#4a1f17;color:#ffb8a6}
-.cb{padding:18px 20px}
-.kp{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}
-.kp div{background:var(--bg);border-radius:14px;padding:10px 12px}
-.kp b{display:block;font-family:var(--head);font-size:26px;line-height:1.1}
-.kp small{color:var(--muted);font-size:11.5px}
-.divs{display:grid;gap:5px;align-items:end;height:86px;margin:6px 0 4px}
-.dv{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;gap:3px}
-.dv i{width:100%;background:var(--brand);border-radius:5px 5px 2px 2px;min-height:3px;transition:height .6s}
-.dv.z i{background:repeating-linear-gradient(45deg,#ffd8cf,#ffd8cf 3px,transparent 3px,transparent 6px);height:8px!important}
-.dv em{font-style:normal;font-family:var(--mono);font-size:10px;color:var(--muted)}
-.dv b{font-family:var(--mono);font-size:10px}
-.dl{font-size:12.5px;color:var(--ink2);margin:8px 0 14px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+/* ---------- login ---------- */
+.gate{min-height:100vh;display:grid;place-items:center;padding:24px;background:var(--ink);position:relative;overflow:hidden}
+.gate::before{content:"";position:absolute;inset:0;background-image:linear-gradient(#ffffff0a 1px,transparent 1px),linear-gradient(90deg,#ffffff0a 1px,transparent 1px);background-size:30px 30px}
+.gbox{position:relative;width:100%;max-width:400px;background:var(--paper);border-radius:24px;padding:30px;box-shadow:0 40px 80px #0006}
+.gbox h1{font-family:var(--head);font-size:28px;margin:18px 0 4px;letter-spacing:-.6px}
+.gbox h1 span{background:var(--lime);color:#11160a;padding:0 8px;border-radius:10px}
+.gbox p{color:var(--muted);margin:0 0 18px;font-size:14px}
+.lbl{display:block;font-size:13px;font-weight:600;color:var(--ink2);margin:12px 0 6px}
+.in{width:100%;border:1.5px solid var(--line);border-radius:12px;padding:12px;background:var(--bg);outline:none}
+.in:focus{border-color:var(--brand);background:var(--paper);box-shadow:0 0 0 4px #3d2fd61f}
+.go{width:100%;margin-top:18px;border:0;border-radius:14px;padding:14px;background:var(--brand);color:#fff;font-weight:700;cursor:pointer;font-size:15px}
+.go:disabled{opacity:.6}
+.gerr{color:var(--err);font-size:13.5px;min-height:20px;margin-top:10px;text-align:center}
+.gnote{font-size:12px;color:var(--muted);margin-top:10px;line-height:1.5;border-top:1px solid var(--line);padding-top:12px}
+
+/* ---------- app shell ---------- */
+.top{background:var(--paper);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+.top-in{max-width:1100px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:12px}
+.top b{font-family:var(--head);font-size:16px;display:block}
+.top small{color:var(--muted);font-size:12px}
+.grow{flex:1}
+.tb{border:1px solid var(--line);background:var(--paper);border-radius:11px;padding:8px 12px;cursor:pointer;font-weight:600;font-size:13px;display:inline-flex;gap:6px;align-items:center}
+.tb:hover{border-color:var(--ink2)}
+.wrap{max-width:1100px;margin:0 auto;padding:26px 20px 50px}
+
+/* home */
+.hello{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-bottom:20px}
+.hello h1{font-family:var(--head);font-size:clamp(26px,4vw,38px);margin:0;letter-spacing:-1px}
+.hello p{margin:4px 0 0;color:var(--muted)}
+.sum{font-family:var(--mono);font-size:13px;background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:8px 14px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.tile{background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:22px;box-shadow:var(--shadow);cursor:pointer;transition:.18s;position:relative;text-align:left;display:block;width:100%}
+.tile:hover{transform:translateY(-3px);border-color:var(--brand);box-shadow:0 22px 40px -22px var(--brand)}
+.tile .ico{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;font-size:24px}
+.tile h2{font-family:var(--head);font-size:21px;margin:14px 0 2px;letter-spacing:-.4px}
+.tile .who{color:var(--muted);font-size:13px}
+.big{display:flex;gap:22px;margin-top:18px;align-items:flex-end}
+.big div b{display:block;font-family:var(--head);font-size:42px;line-height:1}
+.big div small{color:var(--muted);font-size:12px}
+.tile .open{position:absolute;right:20px;bottom:20px;width:40px;height:40px;border-radius:50%;background:var(--ink);color:var(--bg);display:grid;place-items:center;font-size:18px;transition:.18s}
+.tile:hover .open{background:var(--brand);color:#fff}
+.dot{position:absolute;right:20px;top:20px;font-size:12px;font-weight:700;display:inline-flex;gap:6px;align-items:center;color:var(--muted)}
+.dot i{width:9px;height:9px;border-radius:50%;background:var(--muted)}
+.dot.on{color:var(--ok)}.dot.on i{background:var(--ok);box-shadow:0 0 0 4px #0fa36b26}
+.dot.off{color:var(--err)}.dot.off i{background:var(--err)}
+.pend{margin-top:12px;font-size:12.5px;color:var(--coral);font-weight:600;min-height:18px;padding-right:50px}
+.tile.small .big b{font-size:28px}
+
+/* detail */
+.back{margin-bottom:16px}
+.dhead{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:18px}
+.dhead .ico{width:54px;height:54px;border-radius:16px;display:grid;place-items:center;font-size:26px}
+.dhead h1{font-family:var(--head);margin:0;font-size:30px;letter-spacing:-.8px}
+.dhead p{margin:2px 0 0;color:var(--muted)}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);padding:20px;margin-bottom:16px}
+.card h3{font-family:var(--head);margin:0 0 12px;font-size:17px}
+.kp{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+@media(max-width:700px){.kp{grid-template-columns:repeat(2,1fr)}}
+.kp div{background:var(--bg);border-radius:14px;padding:12px}
+.kp b{display:block;font-family:var(--head);font-size:28px;line-height:1.1}
+.kp small{color:var(--muted);font-size:12px}
+.divs{display:grid;gap:6px;align-items:end;height:120px;margin-top:6px}
+.dv{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;gap:4px}
+.dv i{width:100%;background:var(--brand);border-radius:6px 6px 2px 2px;min-height:3px;transition:height .6s}
+.dv.z i{background:repeating-linear-gradient(45deg,#ffd8cf,#ffd8cf 3px,transparent 3px,transparent 6px);height:10px!important}
+.dv em{font-style:normal;font-family:var(--mono);font-size:11px;color:var(--muted)}
+.dv b{font-family:var(--mono);font-size:11px}
+.dl{font-size:13px;color:var(--ink2);margin-top:12px;line-height:1.6}
 .dl b{font-family:var(--mono);background:var(--lime);color:#11160a;padding:2px 8px;border-radius:7px}
-.sect{font-family:var(--mono);font-size:10.5px;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted);margin:16px 0 8px}
-.links{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-@media(max-width:520px){.links{grid-template-columns:1fr}}
-.lk{display:flex;gap:10px;align-items:center;border:1px solid var(--line);border-radius:14px;padding:10px 12px;transition:.15s;background:var(--paper);min-width:0}
-.lk:hover{border-color:var(--brand);transform:translateY(-1px);box-shadow:0 8px 20px -14px var(--brand)}
+.links{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+@media(max-width:800px){.links{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.links{grid-template-columns:1fr}}
+.lk{display:flex;gap:10px;align-items:center;border:1px solid var(--line);border-radius:14px;padding:11px 12px;transition:.15s;min-width:0}
+.lk:hover{border-color:var(--brand);transform:translateY(-1px)}
 .lk .e{font-size:18px;flex:none}
 .lk b{display:block;font-size:13.5px}
 .lk small{display:block;color:var(--muted);font-size:11.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.lk.pri{background:var(--brand);border-color:var(--brand);color:#fff}
-.lk.pri small{color:#ffffffb0}
-.acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
-.ab{border:1px solid var(--line);background:var(--paper);border-radius:11px;padding:8px 12px;cursor:pointer;font-weight:600;font-size:12.5px;display:inline-flex;gap:6px;align-items:center}
-.ab:hover{border-color:var(--ink2)}
+.lk.pri{background:var(--brand);border-color:var(--brand);color:#fff}.lk.pri small{color:#ffffffb0}
+.acts{display:flex;gap:8px;flex-wrap:wrap}
+.ab{border:1px solid var(--line);background:var(--paper);border-radius:11px;padding:9px 13px;cursor:pointer;font-weight:600;font-size:13px;display:inline-flex;gap:6px;align-items:center}
 .ab.wa{background:#25d366;border-color:#25d366;color:#05301a}
-
-.tools{margin-top:18px}
-.tg{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-@media(max-width:960px){.tg{grid-template-columns:repeat(2,1fr)}}
-.qrs{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:18px}
-@media(max-width:700px){.qrs{grid-template-columns:1fr}}
-.qr{display:flex;gap:16px;align-items:center}
-.qr .box{background:#fff;padding:8px;border-radius:12px;border:1px solid var(--line);flex:none}
-.qr .box svg{width:120px;height:120px;display:block}
-.qr h3{font-family:var(--head);margin:0 0 4px;font-size:16px}
-.qr p{margin:0 0 10px;color:var(--muted);font-size:12.5px;word-break:break-all}
+.qr{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.qr .box{background:#fff;padding:8px;border-radius:12px;border:1px solid var(--line)}
+.qr .box svg{width:130px;height:130px;display:block}
 .toast{position:fixed;left:50%;bottom:20px;transform:translate(-50%,80px);opacity:0;background:var(--ink);color:var(--bg);padding:11px 16px;border-radius:12px;font-weight:600;font-size:14px;transition:.3s;z-index:9}
 .toast.show{transform:translate(-50%,0);opacity:1}
-footer{text-align:center;color:var(--muted);font-size:12px;padding:10px 0 30px}
-@media print{.top,.grid,.tools,footer,.acts{display:none!important}.wrap{margin:0}.qrs{grid-template-columns:1fr 1fr}}
+.idle{font-family:var(--mono);font-size:11.5px;color:var(--muted)}
+@media(max-width:600px){.top small,.idle{display:none}}
+@media print{.top,.back,.noprint{display:none!important}}
 </style>
 </head>
 <body>
-<header class="top">
-  <div class="top-in">
-    <div class="bar">
-      <div class="logo"><img id="logo" src="https://adypu.edu.in/wp-content/themes/adypu/images/logo.png" alt="ADYPU" onerror="this.outerHTML='<span>ADYPU</span>'"></div>
-      <div class="t"><b>School of Engineering</b><small>Academic Dashboard · AY 2026-27</small></div>
-      <div class="grow"></div>
-      <span class="clock" id="clock"></span>
-      <button class="chipb" id="refresh">⟳ Refresh</button>
-      <button class="chipb" id="theme">🌙</button>
-    </div>
-    <h1>All portals, <span>one place</span></h1>
-    <p class="sub">Live status, submission counts and deadlines for every portal, plus all the links you need: student pages, faculty consoles, GitHub and Google backends.</p>
-    <div class="totals">
-      <div class="tot"><b id="tAll">–</b><small>total submissions</small></div>
-      <div class="tot"><b id="tStud">–</b><small>students covered</small></div>
-      <div class="tot"><b id="tLive">–</b><small>portals online</small></div>
-    </div>
-  </div>
-</header>
 
-<main class="wrap">
-  <div class="grid" id="portals"></div>
+<!-- ============ SIGN IN ============ -->
+<section class="gate" id="gate">
+  <form class="gbox" id="gform" autocomplete="on">
+    <div class="logo"><img src="https://adypu.edu.in/wp-content/themes/adypu/images/logo.png" alt="ADYPU" onerror="this.outerHTML='<span>ADYPU</span>'"></div>
+    <h1>Academic <span>Dashboard</span></h1>
+    <p>School of Engineering · AY 2026-27 · authorised staff only</p>
+    <label class="lbl" for="gu">Username</label>
+    <input class="in" id="gu" autocomplete="username" autocapitalize="none" spellcheck="false" required>
+    <label class="lbl" for="gp">Password</label>
+    <input class="in" id="gp" type="password" autocomplete="current-password" required>
+    <button class="go" id="gbtn">Sign in →</button>
+    <div class="gerr" id="gerr"></div>
+    <div class="gnote">🔐 Use your <b>DSL Lab faculty console</b> username &amp; password. It is checked by the DSL server, and every sign-in is recorded in its audit log. You are signed out automatically after 20 minutes of inactivity.</div>
+  </form>
+</section>
 
-  <section class="card tools">
-    <div class="ch"><div class="ico" style="background:#fff2da">🧰</div><div><h2>Google &amp; GitHub tools</h2><p>Backends, data and hosting for both portals</p></div></div>
-    <div class="cb">
-      <div class="tg">
-        <a class="lk" href="https://script.google.com/home" target="_blank" rel="noopener"><span class="e">⚙️</span><span><b>Apps Script projects</b><small>Code.gs · deployments</small></span></a>
-        <a class="lk" href="https://docs.google.com/spreadsheets/" target="_blank" rel="noopener"><span class="e">📊</span><span><b>Google Sheets</b><small>DSL & Research data sheets</small></span></a>
-        <a class="lk" href="https://drive.google.com/drive/my-drive" target="_blank" rel="noopener"><span class="e">📁</span><span><b>Google Drive</b><small>Uploaded files by division</small></span></a>
-        <a class="lk" href="https://mail.google.com/mail/u/0/#sent" target="_blank" rel="noopener"><span class="e">📧</span><span><b>Gmail · Sent</b><small>Student confirmation emails</small></span></a>
-        <a class="lk" href="https://github.com/atul1986" target="_blank" rel="noopener"><span class="e">🐙</span><span><b>GitHub profile</b><small>atul1986</small></span></a>
-        <a class="lk" href="https://script.google.com/home/executions" target="_blank" rel="noopener"><span class="e">📜</span><span><b>Apps Script executions</b><small>Errors & activity log</small></span></a>
-        <a class="lk" href="https://script.google.com/home/triggers" target="_blank" rel="noopener"><span class="e">⏱</span><span><b>Apps Script triggers</b><small>Scheduled jobs</small></span></a>
-        <a class="lk" href="https://www.githubstatus.com/" target="_blank" rel="noopener"><span class="e">🟢</span><span><b>GitHub status</b><small>If a site is down</small></span></a>
-      </div>
-    </div>
-  </section>
+<!-- ============ APP ============ -->
+<div id="app" hidden>
+  <header class="top"><div class="top-in">
+    <div class="logo" style="min-height:40px;padding:4px 8px"><img src="https://adypu.edu.in/wp-content/themes/adypu/images/logo.png" alt="ADYPU" style="height:28px" onerror="this.outerHTML='<span>ADYPU</span>'"></div>
+    <div><b>Academic Dashboard</b><small>School of Engineering · AY 2026-27</small></div>
+    <div class="grow"></div>
+    <span class="idle" id="idle"></span>
+    <button class="tb" id="refresh" title="Refresh">⟳</button>
+    <button class="tb" id="theme" title="Theme">🌙</button>
+    <button class="tb" id="logout">Sign out</button>
+  </div></header>
 
-  <section class="card tools">
-    <div class="ch"><div class="ico" style="background:#e8ecff">📱</div><div><h2>QR codes for students</h2><p>Print or project these in class. Use the 🖨 button to print just the QR codes.</p></div><button class="ab" style="margin-left:auto" onclick="window.print()">🖨 Print QR</button></div>
-    <div class="cb"><div class="qrs" id="qrs"></div></div>
-  </section>
-</main>
-<footer>© <span id="yr"></span> Ajeenkya D Y Patil University · School of Engineering · Academic Dashboard 2026-27</footer>
+  <main class="wrap">
+    <!-- home -->
+    <section id="home">
+      <div class="hello"><div><h1 id="greet">Welcome</h1><p id="today"></p></div><span class="sum" id="sum">loading…</span></div>
+      <div class="tiles" id="tiles"></div>
+    </section>
+    <!-- detail -->
+    <section id="detail" hidden></section>
+  </main>
+</div>
 <div class="toast" id="toast"></div>
 
 <script>
+(() => {
+const AUTH_API = 'https://script.google.com/macros/s/AKfycbzy-uJIJug0aeMFLVxS-UWXEyxVxEwF-s6HB2S6FtZgKsE5L738G0EdQU0XHxPCSqfH/exec'; // DSL backend verifies sign-in
 const PORTALS = [
-  {
-    key: 'dsl', name: 'DSL Lab Projects', who: 'Second Year B.Tech · Divisions A–M', icon: '🧩', tint: '#e8ecff',
-    site: 'https://atul1986.github.io/DSL26/', repo: 'atul1986/DSL26',
+  { key: 'dsl', name: 'DSL Lab Projects', who: 'Second Year B.Tech · Div A–M', icon: '🧩', tint: '#e8ecff',
+    site: 'https://atul1986.github.io/DSL26/', repo: 'atul1986/DSL26', divisions: 'ABCDEFGHIJKLM'.split(''),
     api: 'https://script.google.com/macros/s/AKfycbzy-uJIJug0aeMFLVxS-UWXEyxVxEwF-s6HB2S6FtZgKsE5L738G0EdQU0XHxPCSqfH/exec',
-    divisions: 'ABCDEFGHIJKLM'.split(''),
-    wa: '📢 *DSL Lab Project Submission (SY B.Tech)*\nSubmit your project here: https://atul1986.github.io/DSL26/\nKeep ready: team details, project title, GitHub link and report (PDF/Word).'
-  },
-  {
-    key: 'rp', name: 'TE Research Papers', who: 'Third Year (TE) B.Tech · Divisions A–E', icon: '📄', tint: '#f4ffe0',
-    site: 'https://atul1986.github.io/ResearchPaper-26/', repo: 'atul1986/ResearchPaper-26',
+    wa: '📢 *DSL Lab Project Submission (SY B.Tech)*\nSubmit your project here: https://atul1986.github.io/DSL26/\nKeep ready: team details, project title, GitHub link and report (PDF/Word).' },
+  { key: 'rp', name: 'TE Research Papers', who: 'Third Year (TE) B.Tech · Div A–E', icon: '📄', tint: '#f4ffe0',
+    site: 'https://atul1986.github.io/ResearchPaper-26/', repo: 'atul1986/ResearchPaper-26', divisions: 'ABCDE'.split(''),
     api: 'https://script.google.com/macros/s/AKfycbyjfqQDfWNrdR4wP7nyqfTiRCAn4dHiGl4wByF-ngyBhvPy7OiPc_uicbXsPsC_j_vo/exec',
-    divisions: 'ABCDE'.split(''),
-    wa: '📢 *TE Research Paper Submission*\nSubmit your paper here: https://atul1986.github.io/ResearchPaper-26/\nKeep ready: author details, paper title, objective, paper (Word/PDF) and plagiarism report.'
-  }
+    wa: '📢 *TE Research Paper Submission*\nSubmit your paper here: https://atul1986.github.io/ResearchPaper-26/\nKeep ready: author details, paper title, objective, paper (Word/PDF) and plagiarism report.' }
 ];
-const $ = s => document.querySelector(s);
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
 const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const ss = { get: k => { try { return sessionStorage.getItem(k); } catch (e) { return null; } }, set: (k, v) => { try { sessionStorage.setItem(k, v); } catch (e) {} }, del: k => { try { sessionStorage.removeItem(k); } catch (e) {} } };
 function toast(m){ const t = $('#toast'); t.textContent = m; t.classList.add('show'); clearTimeout(t._t); t._t = setTimeout(() => t.classList.remove('show'), 2200); }
 try { const t = localStorage.getItem('hub_theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
 $('#theme').onclick = () => { const t = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'; document.documentElement.dataset.theme = t; try { localStorage.setItem('hub_theme', t); } catch (e) {} };
-$('#yr').textContent = new Date().getFullYear();
-setInterval(() => $('#clock').textContent = new Date().toLocaleString('en-IN', {weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit', second: '2-digit'}), 1000);
 
-function card(p){
-  const L = (e, t, s, href, cls = '') => `<a class="lk ${cls}" href="${href}" target="_blank" rel="noopener"><span class="e">${e}</span><span style="min-width:0"><b>${t}</b><small>${s}</small></span></a>`;
-  return `<section class="card" id="c-${p.key}">
-    <div class="ch"><div class="ico" style="background:${p.tint}">${p.icon}</div><div><h2>${p.name}</h2><p>${p.who}</p></div><span class="status" id="st-${p.key}"><i></i>checking…</span></div>
-    <div class="cb">
-      <div class="kp"><div><b id="n-${p.key}">–</b><small>submissions</small></div><div><b id="s-${p.key}">–</b><small>students</small></div><div><b id="d-${p.key}">–</b><small>days left</small></div></div>
-      <div class="divs" id="dv-${p.key}" style="grid-template-columns:repeat(${p.divisions.length},1fr)"></div>
-      <div class="dl" id="dl-${p.key}">Deadline: loading…</div>
-      <div class="sect">Open</div>
-      <div class="links">
-        ${L('🎓', 'Student portal', p.site.replace('https://', ''), p.site, 'pri')}
-        ${L('🔐', 'Faculty console', 'admin.html · review & export', p.site + 'admin.html')}
-        ${L('🔎', 'Track status page', 'what students see', p.site + '#track')}
-        ${L('⚙️', 'Settings (deadline)', 'console → Settings', p.site + 'admin.html')}
-      </div>
-      <div class="sect">Code &amp; hosting</div>
-      <div class="links">
-        ${L('🐙', 'GitHub repository', p.repo, 'https://github.com/' + p.repo)}
-        ${L('🚀', 'Deploy status', 'GitHub Actions', 'https://github.com/' + p.repo + '/actions')}
-        ${L('🌐', 'Pages settings', 'enable / branch', 'https://github.com/' + p.repo + '/settings/pages')}
-        ${L('✏️', 'Edit config.js', 'API link · divisions', 'https://github.com/' + p.repo + '/edit/main/assets/config.js')}
-        ${L('📘', 'Setup guide', 'README', 'https://github.com/' + p.repo + '#readme')}
-        ${L('🧠', 'Backend Code.gs', 'latest version', 'https://github.com/' + p.repo + '/blob/main/backend/Code.gs')}
-      </div>
-      <div class="acts">
-        <button class="ab" data-copy="${p.site}">📋 Copy student link</button>
-        <a class="ab wa" href="https://wa.me/?text=${encodeURIComponent(p.wa)}" target="_blank" rel="noopener">🟢 Share on WhatsApp</a>
-        <button class="ab" data-copy="${p.api}">🔗 Copy API link</button>
-      </div>
-    </div></section>`;
+async function post(url, body, ms = 20000){
+  const ctl = new AbortController(), to = setTimeout(() => ctl.abort(), ms);
+  try { const r = await fetch(url, { method: 'POST', body: JSON.stringify(body), signal: ctl.signal }); const j = await r.json(); if (!j.ok) throw new Error(j.error || 'Request failed'); return j.data; }
+  finally { clearTimeout(to); }
 }
-$('#portals').innerHTML = PORTALS.map(card).join('');
-$('#qrs').innerHTML = PORTALS.map(p => `<div class="qr"><div class="box" id="qr-${p.key}"></div><div><h3>${p.name}</h3><p>${p.site}</p><button class="ab" data-copy="${p.site}">📋 Copy link</button></div></div>`).join('');
-PORTALS.forEach(p => { try { const q = qrcode(0, 'M'); q.addData(p.site); q.make(); $('#qr-' + p.key).innerHTML = q.createSvgTag({cellSize: 4, margin: 0, scalable: true}); } catch (e) { $('#qr-' + p.key).textContent = 'QR unavailable'; } });
+
+/* ---------- sign in ---------- */
+let TOKEN = ss.get('hub_tok'), NAME = ss.get('hub_name') || '';
+$('#gform').onsubmit = async e => {
+  e.preventDefault(); $('#gerr').textContent = ''; const b = $('#gbtn'); b.disabled = true; b.textContent = 'Verifying…';
+  try {
+    const r = await post(AUTH_API, { action: 'login', username: $('#gu').value.trim(), password: $('#gp').value });
+    TOKEN = r.token; NAME = (r.user && (r.user.name || r.user.u)) || ''; ss.set('hub_tok', TOKEN); ss.set('hub_name', NAME); $('#gp').value = ''; enter();
+  } catch (err) { $('#gerr').textContent = err.name === 'AbortError' ? 'Server is slow to respond. Please try again.' : err.message; }
+  finally { b.disabled = false; b.textContent = 'Sign in →'; }
+};
+function signOut(msg){
+  if (TOKEN) post(AUTH_API, { action: 'logout', token: TOKEN }).catch(() => {});
+  TOKEN = null; ss.del('hub_tok'); ss.del('hub_name'); DATA = {};
+  $('#app').hidden = true; $('#gate').hidden = false; $('#gerr').textContent = msg || ''; location.hash = '';
+}
+$('#logout').onclick = () => signOut('Signed out.');
+const IDLE = 20 * 60; let last = Date.now();
+['click','keydown','mousemove','touchstart','scroll'].forEach(ev => addEventListener(ev, () => last = Date.now(), {passive: true}));
+setInterval(() => { if (!TOKEN) return; const left = IDLE - Math.floor((Date.now() - last) / 1000); $('#idle').textContent = 'auto sign-out ' + Math.floor(left / 60) + ':' + String(left % 60).padStart(2, '0'); if (left <= 0) signOut('Signed out after 20 minutes of inactivity.'); }, 1000);
+
+/* ---------- data ---------- */
+let DATA = {};
+async function loadOne(p){
+  try { const d = await post(p.api, { action: 'init' }); DATA[p.key] = { ok: true, c: d.config, s: d.stats }; }
+  catch (e) { DATA[p.key] = { ok: false }; }
+}
+async function loadAll(){ await Promise.all(PORTALS.map(loadOne)); render(); }
+const daysLeft = c => c && c.DEADLINE ? Math.max(0, Math.ceil((new Date(c.DEADLINE) - new Date()) / 864e5)) : '∞';
+const pending = (p, s) => p.divisions.filter(d => !(s.byDiv[d] || 0));
+
+/* ---------- views ---------- */
+function home(){
+  const hr = new Date().getHours();
+  $('#greet').textContent = (hr < 12 ? 'Good morning' : hr < 17 ? 'Good afternoon' : 'Good evening') + (NAME ? ', ' + NAME.split(' ')[0] : '');
+  $('#today').textContent = new Date().toLocaleDateString('en-IN', {weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'});
+  const tot = PORTALS.reduce((a, p) => a + ((DATA[p.key] && DATA[p.key].s && DATA[p.key].s.total) || 0), 0);
+  const on = PORTALS.filter(p => DATA[p.key] && DATA[p.key].ok).length;
+  $('#sum').textContent = Object.keys(DATA).length ? `${tot} submissions · ${on}/${PORTALS.length} portals online` : 'loading…';
+  $('#tiles').innerHTML = PORTALS.map(p => {
+    const d = DATA[p.key];
+    const st = !d ? '' : d.ok ? 'on' : 'off';
+    const pend = d && d.ok ? pending(p, d.s) : [];
+    return `<button class="tile" data-go="${p.key}">
+      <span class="dot ${st}"><i></i>${!d ? 'checking' : d.ok ? 'online' : 'offline'}</span>
+      <div class="ico" style="background:${p.tint}">${p.icon}</div>
+      <h2>${p.name}</h2><div class="who">${p.who}</div>
+      <div class="big"><div><b>${d && d.ok ? d.s.total : '–'}</b><small>submissions</small></div><div><b>${d && d.ok ? daysLeft(d.c) : '–'}</b><small>days left</small></div></div>
+      <div class="pend">${d && d.ok ? (pend.length ? '⚠ ' + pend.length + ' division' + (pend.length > 1 ? 's' : '') + ' yet to submit' : '✓ every division has submitted') : ''}</div>
+      <span class="open">→</span></button>`;
+  }).join('') + `<button class="tile small" data-go="tools">
+      <div class="ico" style="background:#fff2da">🧰</div><h2>Tools &amp; links</h2><div class="who">Google Apps Script, Sheets, Drive, Gmail, GitHub</div>
+      <div class="pend" style="color:var(--muted);font-weight:500">Backends, data files and hosting</div><span class="open">→</span></button>`;
+  $$('[data-go]').forEach(t => t.onclick = () => { location.hash = t.dataset.go; });
+}
+const L = (e, t, s, href, cls = '') => `<a class="lk ${cls}" href="${href}" target="_blank" rel="noopener"><span class="e">${e}</span><span style="min-width:0"><b>${t}</b><small>${s}</small></span></a>`;
+function detail(key){
+  const box = $('#detail');
+  if (key === 'tools') {
+    box.innerHTML = `<button class="tb back" onclick="location.hash=''">← Dashboard</button>
+      <div class="dhead"><div class="ico" style="background:#fff2da">🧰</div><div><h1>Tools &amp; links</h1><p>Everything behind the portals</p></div></div>
+      <div class="card"><h3>Google</h3><div class="links">
+        ${L('⚙️', 'Apps Script projects', 'Code.gs · deployments', 'https://script.google.com/home')}
+        ${L('📜', 'Executions log', 'errors & activity', 'https://script.google.com/home/executions')}
+        ${L('📊', 'Google Sheets', 'submission data', 'https://docs.google.com/spreadsheets/')}
+        ${L('📁', 'Google Drive', 'uploaded files', 'https://drive.google.com/drive/my-drive')}
+        ${L('📧', 'Gmail · Sent', 'confirmation emails', 'https://mail.google.com/mail/u/0/#sent')}
+        ${L('⏱', 'Triggers', 'scheduled jobs', 'https://script.google.com/home/triggers')}
+      </div></div>
+      <div class="card"><h3>GitHub</h3><div class="links">
+        ${L('🐙', 'GitHub profile', 'atul1986', 'https://github.com/atul1986')}
+        ${PORTALS.map(p => L('📦', p.repo.split('/')[1], 'repository', 'https://github.com/' + p.repo)).join('')}
+        ${L('🗂', 'AcademicDashboard26-27', 'this dashboard', 'https://github.com/atul1986/AcademicDashboard26-27')}
+        ${L('🟢', 'GitHub status', 'if a site is down', 'https://www.githubstatus.com/')}
+      </div></div>`;
+    return;
+  }
+  const p = PORTALS.find(x => x.key === key); if (!p) { location.hash = ''; return; }
+  const d = DATA[p.key] || {};
+  const s = d.s || { total: 0, students: 0, byDiv: {} }, c = d.c || {};
+  const vals = p.divisions.map(x => s.byDiv[x] || 0), max = Math.max(1, ...vals), pend = pending(p, s);
+  const dl = c.DEADLINE ? new Date(c.DEADLINE) : null;
+  box.innerHTML = `<button class="tb back" onclick="location.hash=''">← Dashboard</button>
+    <div class="dhead"><div class="ico" style="background:${p.tint}">${p.icon}</div><div><h1>${p.name}</h1><p>${p.who} · ${d.ok ? '<span style="color:var(--ok);font-weight:700">● online</span>' : '<span style="color:var(--err);font-weight:700">● offline</span>'}</p></div></div>
+    <div class="card"><h3>Status</h3>
+      <div class="kp"><div><b>${s.total}</b><small>submissions</small></div><div><b>${s.students}</b><small>students</small></div><div><b>${daysLeft(c)}</b><small>days left</small></div><div><b>${p.divisions.length - pend.length}/${p.divisions.length}</b><small>divisions active</small></div></div>
+      <div class="divs" style="grid-template-columns:repeat(${p.divisions.length},1fr);margin-top:18px">${p.divisions.map((x, i) => `<div class="dv ${vals[i] ? '' : 'z'}" title="Division ${x}: ${vals[i]}"><b>${vals[i]}</b><i style="height:${vals[i] / max * 80}px"></i><em>${x}</em></div>`).join('')}</div>
+      <div class="dl">Deadline: ${dl ? `<b>${dl.toLocaleString('en-IN', {day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Kolkata'})}</b>` : 'none'}${pend.length ? `<br><span style="color:var(--coral);font-weight:600">No submissions yet: Division ${pend.join(', ')}</span>` : '<br>✓ Every division has submitted'}</div>
+    </div>
+    <div class="card"><h3>Open</h3><div class="links">
+      ${L('🎓', 'Student portal', p.site.replace('https://', ''), p.site, 'pri')}
+      ${L('🔐', 'Faculty console', 'review · download · export', p.site + 'admin.html')}
+      ${L('🔎', 'Track status page', 'what students see', p.site + '#track')}
+    </div></div>
+    <div class="card"><h3>Code &amp; hosting</h3><div class="links">
+      ${L('🐙', 'GitHub repository', p.repo, 'https://github.com/' + p.repo)}
+      ${L('🚀', 'Deploy status', 'GitHub Actions', 'https://github.com/' + p.repo + '/actions')}
+      ${L('🌐', 'Pages settings', 'branch / enable', 'https://github.com/' + p.repo + '/settings/pages')}
+      ${L('✏️', 'Edit config.js', 'API link · divisions', 'https://github.com/' + p.repo + '/edit/main/assets/config.js')}
+      ${L('🧠', 'Backend Code.gs', 'latest version', 'https://github.com/' + p.repo + '/blob/main/backend/Code.gs')}
+      ${L('📘', 'Setup guide', 'README', 'https://github.com/' + p.repo + '#readme')}
+    </div></div>
+    <div class="card"><h3>Share with students</h3>
+      <div class="qr"><div class="box" id="qrbox"></div><div>
+        <p style="margin:0 0 12px;color:var(--muted);font-size:13px;word-break:break-all">${p.site}</p>
+        <div class="acts noprint">
+          <button class="ab" data-copy="${p.site}">📋 Copy link</button>
+          <a class="ab wa" href="https://wa.me/?text=${encodeURIComponent(p.wa)}" target="_blank" rel="noopener">🟢 Share on WhatsApp</a>
+          <button class="ab" onclick="window.print()">🖨 Print QR</button>
+        </div></div></div>
+    </div>`;
+  try { const q = qrcode(0, 'M'); q.addData(p.site); q.make(); $('#qrbox').innerHTML = q.createSvgTag({cellSize: 4, margin: 0, scalable: true}); } catch (e) { $('#qrbox').textContent = 'QR unavailable'; }
+}
 document.addEventListener('click', e => {
   const b = e.target.closest('[data-copy]'); if (!b) return;
-  const t = b.dataset.copy;
-  (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(() => toast('Copied: ' + t.slice(0, 48) + (t.length > 48 ? '…' : '')), () => prompt('Copy this link:', t));
+  const t = b.dataset.copy; (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(() => toast('Link copied'), () => prompt('Copy this link:', t));
 });
-
-async function load(p){
-  const st = $('#st-' + p.key);
-  st.className = 'status'; st.innerHTML = '<i></i>checking…';
-  try {
-    const ctl = new AbortController(); const to = setTimeout(() => ctl.abort(), 20000);
-    const res = await fetch(p.api, { method: 'POST', body: JSON.stringify({ action: 'init' }), signal: ctl.signal });
-    clearTimeout(to);
-    const j = await res.json(); if (!j.ok) throw new Error(j.error || 'error');
-    const { config: c, stats: s } = j.data;
-    st.className = 'status on'; st.innerHTML = '<i></i>online';
-    $('#n-' + p.key).textContent = s.total; $('#s-' + p.key).textContent = s.students;
-    const vals = p.divisions.map(d => s.byDiv[d] || 0), max = Math.max(1, ...vals);
-    $('#dv-' + p.key).innerHTML = p.divisions.map((d, i) => `<div class="dv ${vals[i] ? '' : 'z'}" title="Division ${d}: ${vals[i]}"><b>${vals[i]}</b><i style="height:${vals[i] / max * 52}px"></i><em>${d}</em></div>`).join('');
-    const pending = p.divisions.filter((d, i) => !vals[i]);
-    if (c.DEADLINE) {
-      const dl = new Date(c.DEADLINE), days = Math.ceil((dl - new Date()) / 864e5);
-      $('#d-' + p.key).textContent = days > 0 ? days : 0;
-      $('#dl-' + p.key).innerHTML = `Deadline: <b>${dl.toLocaleString('en-IN', {day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Kolkata'})}</b>${days <= 0 ? (c.ACCEPT_LATE ? ' · passed, late entries flagged' : ' · closed') : ''}${pending.length ? ` · <span style="color:var(--coral);font-weight:600">no submissions yet: ${pending.join(', ')}</span>` : ' · all divisions submitted 🎉'}`;
-    } else { $('#d-' + p.key).textContent = '∞'; $('#dl-' + p.key).textContent = 'No deadline set'; }
-    return { ok: true, total: s.total, students: s.students };
-  } catch (e) {
-    st.className = 'status off'; st.innerHTML = '<i></i>offline';
-    $('#dl-' + p.key).innerHTML = '<span style="color:var(--err)">Backend not reachable. Check the Apps Script deployment.</span>';
-    return { ok: false, total: 0, students: 0 };
-  }
+function render(){
+  if (!TOKEN) return;
+  const key = location.hash.replace('#', '');
+  $('#home').hidden = !!key; $('#detail').hidden = !key;
+  key ? detail(key) : home();
+  window.scrollTo(0, 0);
 }
-async function loadAll(){
-  const r = await Promise.all(PORTALS.map(load));
-  $('#tAll').textContent = r.reduce((a, x) => a + x.total, 0);
-  $('#tStud').textContent = r.reduce((a, x) => a + x.students, 0);
-  $('#tLive').textContent = r.filter(x => x.ok).length + ' / ' + r.length;
-}
-$('#refresh').onclick = loadAll;
-loadAll(); setInterval(loadAll, 120000);
+addEventListener('hashchange', render);
+$('#refresh').onclick = () => { toast('Refreshing…'); loadAll(); };
+function enter(){ $('#gate').hidden = true; $('#app').hidden = false; render(); loadAll(); }
+setInterval(() => { if (TOKEN) loadAll(); }, 120000);
+if (TOKEN) { enter(); post(AUTH_API, { action: 'dashboard', token: TOKEN }).catch(e => { if (/SESSION_EXPIRED/.test(e.message)) signOut('Your session expired. Please sign in again.'); }); }
+})();
 </script>
 </body>
 </html>

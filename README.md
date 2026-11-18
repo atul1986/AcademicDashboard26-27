@@ -11,6 +11,10 @@ One page to monitor and open every student submission portal:
 
 Live dashboard: **https://atul1986.github.io/AcademicDashboard26-27/**
 
+🔐 **Private:** the page opens with a sign-in screen. Use your DSL Lab faculty console username and password (checked by the DSL backend, logged in its audit log). Auto sign-out after 20 minutes idle.
+
+**Layout:** a simple home screen with one tile per portal (submissions, days left, divisions pending). Click a tile for full details: division chart, deadline, all links, QR code and WhatsApp share. A Tools tile holds the Google and GitHub links.
+
 It shows each portal's online status, submission and student counts, division-wise bars, deadline, and links to GitHub, the Apps Script backends, Sheets and Drive. It also has WhatsApp share buttons and printable QR codes.
 Counts are read live from each portal's public `init` API (no student personal data is shown).
 
