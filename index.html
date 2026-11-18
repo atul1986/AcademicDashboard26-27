@@ -35,6 +35,48 @@ button,input{font:inherit;color:inherit}
 .gerr{color:var(--err);font-size:13.5px;min-height:20px;margin-top:10px;text-align:center}
 .gnote{font-size:12px;color:var(--muted);margin-top:10px;line-height:1.5;border-top:1px solid var(--line);padding-top:12px}
 
+
+/* ---------- public landing: snapshot + sign-in ---------- */
+.gate{display:block;min-height:100vh;padding:0;place-items:initial}
+.lnd-top{position:relative;max-width:1180px;margin:0 auto;padding:18px 22px;display:flex;align-items:center;gap:12px;color:#eef0fa}
+.lnd-top b{font-family:var(--head);font-size:16px;display:block}
+.lnd-top small{opacity:.6;font-size:12px}
+.lnd-top .clk{margin-left:auto;font-family:var(--mono);font-size:12.5px;opacity:.75}
+.lnd{position:relative;max-width:1180px;margin:0 auto;padding:18px 22px 50px;display:grid;grid-template-columns:1fr 380px;gap:26px;align-items:start}
+@media(max-width:960px){.lnd{grid-template-columns:1fr}}
+.lnd h1.hero{font-family:var(--head);color:#fff;font-size:clamp(30px,4.6vw,52px);letter-spacing:-1.4px;line-height:1.02;margin:8px 0 10px}
+.lnd h1.hero span{background:var(--lime);color:#11160a;padding:0 10px;border-radius:12px;display:inline-block;transform:rotate(-1.2deg)}
+.lnd .lead{color:#c3c7dc;margin:0 0 20px;max-width:560px;line-height:1.55}
+.strip{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
+.strip div{background:#ffffff0f;border:1px solid #ffffff1f;border-radius:16px;padding:14px 16px;color:#fff}
+.strip b{display:block;font-family:var(--head);font-size:34px;line-height:1}
+.strip small{color:#a7acc8;font-size:12px}
+.snap{display:grid;gap:14px}
+.sc{background:linear-gradient(135deg,#ffffff12,#ffffff06);border:1px solid #ffffff22;border-radius:22px;padding:18px 20px;color:#eef0fa;display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center;cursor:pointer;transition:.18s;text-align:left;width:100%}
+.sc:hover{border-color:var(--lime);transform:translateY(-2px)}
+@media(max-width:600px){.sc{grid-template-columns:1fr;gap:12px}}
+.ring{width:84px;height:84px;position:relative;flex:none}
+.ring svg{transform:rotate(-90deg)}
+.ring .rv{position:absolute;inset:0;display:grid;place-items:center;text-align:center;font-family:var(--head);font-weight:700;font-size:17px;line-height:1}
+.ring .rv small{display:block;font-family:var(--sans);font-weight:500;font-size:9.5px;color:#a7acc8;margin-top:3px}
+.sc h3{font-family:var(--head);margin:0;font-size:19px;letter-spacing:-.3px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.sc .who{color:#a7acc8;font-size:12.5px;margin-top:2px}
+.sc .nums{display:flex;gap:22px;margin-top:10px;flex-wrap:wrap}
+.sc .nums b{font-family:var(--head);font-size:30px;line-height:1;display:block;color:#fff}
+.sc .nums small{color:#a7acc8;font-size:11.5px}
+.sc .spark{display:flex;gap:3px;align-items:flex-end;height:30px;margin-top:10px}
+.sc .spark i{flex:1;background:var(--lime);border-radius:3px 3px 1px 1px;min-height:3px;opacity:.9}
+.sc .spark i.z{background:#ff6a4d55;height:4px!important}
+.sc .lock{font-size:12px;color:#a7acc8;text-align:right;white-space:nowrap}
+.sc .lock b{display:block;font-size:20px;margin-bottom:4px}
+.sdot{font-size:11px;font-weight:700;border-radius:999px;padding:3px 9px;background:#ffffff14;color:#a7acc8;display:inline-flex;gap:5px;align-items:center}
+.sdot i{width:7px;height:7px;border-radius:50%;background:#a7acc8}
+.sdot.on{color:#7ef2b8}.sdot.on i{background:#2fd08f}
+.sdot.off{color:#ffb8a6}.sdot.off i{background:#ff6a4d}
+.dlpill{display:inline-block;margin-top:8px;font-family:var(--mono);font-size:11.5px;background:var(--lime);color:#11160a;padding:2px 8px;border-radius:7px}
+.lnd .gbox{position:sticky;top:20px;max-width:none}
+.upd{color:#8a90ad;font-size:12px;margin-top:12px;font-family:var(--mono)}
+
 /* ---------- app shell ---------- */
 .top{background:var(--paper);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
 .top-in{max-width:1100px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:12px}
@@ -115,18 +157,36 @@ button,input{font:inherit;color:inherit}
 
 <!-- ============ SIGN IN ============ -->
 <section class="gate" id="gate">
-  <form class="gbox" id="gform" autocomplete="on">
-    <div class="logo"><img src="https://adypu.edu.in/wp-content/themes/adypu/images/logo.png" alt="ADYPU" onerror="this.outerHTML='<span>ADYPU</span>'"></div>
-    <h1>Academic <span>Dashboard</span></h1>
-    <p>School of Engineering · AY 2026-27 · authorised staff only</p>
-    <label class="lbl" for="gu">Username</label>
-    <input class="in" id="gu" autocomplete="username" autocapitalize="none" spellcheck="false" required>
-    <label class="lbl" for="gp">Password</label>
-    <input class="in" id="gp" type="password" autocomplete="current-password" required>
-    <button class="go" id="gbtn">Sign in →</button>
-    <div class="gerr" id="gerr"></div>
-    <div class="gnote">🔐 Use your <b>DSL Lab faculty console</b> username &amp; password. It is checked by the DSL server, and every sign-in is recorded in its audit log. You are signed out automatically after 20 minutes of inactivity.</div>
-  </form>
+  <div class="lnd-top">
+    <div class="logo" style="min-height:40px;padding:4px 8px"><img src="https://adypu.edu.in/wp-content/themes/adypu/images/logo.png" alt="ADYPU" style="height:28px" onerror="this.outerHTML='<span>ADYPU</span>'"></div>
+    <div><b>Academic Dashboard</b><small>School of Engineering · AY 2026-27</small></div>
+    <span class="clk" id="lclock"></span>
+  </div>
+  <div class="lnd">
+    <div>
+      <h1 class="hero">Submissions <span>at a glance</span></h1>
+      <p class="lead">A live snapshot of every student submission portal. Sign in as admin to open the full details, links and tools.</p>
+      <div class="strip">
+        <div><b id="lTot">–</b><small>total submissions</small></div>
+        <div><b id="lStu">–</b><small>students covered</small></div>
+        <div><b id="lOn">–</b><small>portals online</small></div>
+      </div>
+      <div class="snap" id="snap"></div>
+      <div class="upd" id="lupd">loading live data…</div>
+    </div>
+    <form class="gbox" id="gform" autocomplete="on">
+      <div style="font-size:30px">🔐</div>
+      <h1 style="margin-top:8px">Admin <span>sign in</span></h1>
+      <p>Full details, links and tools for authorised staff only.</p>
+      <label class="lbl" for="gu">Username</label>
+      <input class="in" id="gu" autocomplete="username" autocapitalize="none" spellcheck="false" required>
+      <label class="lbl" for="gp">Password</label>
+      <input class="in" id="gp" type="password" autocomplete="current-password" required>
+      <button class="go" id="gbtn">Sign in →</button>
+      <div class="gerr" id="gerr"></div>
+      <div class="gnote">Use your <b>DSL Lab faculty console</b> username &amp; password. It is checked by the DSL server and recorded in its audit log. Auto sign-out after 20 minutes idle.</div>
+    </form>
+  </div>
 </section>
 
 <!-- ============ APP ============ -->
@@ -192,7 +252,7 @@ $('#gform').onsubmit = async e => {
 function signOut(msg){
   if (TOKEN) post(AUTH_API, { action: 'logout', token: TOKEN }).catch(() => {});
   TOKEN = null; ss.del('hub_tok'); ss.del('hub_name'); DATA = {};
-  $('#app').hidden = true; $('#gate').hidden = false; $('#gerr').textContent = msg || ''; location.hash = '';
+  $('#app').hidden = true; $('#gate').hidden = false; $('#gerr').textContent = msg || ''; location.hash = ''; loadAll();
 }
 $('#logout').onclick = () => signOut('Signed out.');
 const IDLE = 20 * 60; let last = Date.now();
@@ -205,14 +265,35 @@ async function loadOne(p){
   try { const d = await post(p.api, { action: 'init' }); DATA[p.key] = { ok: true, c: d.config, s: d.stats }; }
   catch (e) { DATA[p.key] = { ok: false }; }
 }
-async function loadAll(){ await Promise.all(PORTALS.map(loadOne)); render(); }
+async function loadAll(){ await Promise.all(PORTALS.map(loadOne)); landing(); render(); }
+function landing(){
+  const ok = PORTALS.filter(p => DATA[p.key] && DATA[p.key].ok);
+  $('#lTot').textContent = ok.reduce((a, p) => a + DATA[p.key].s.total, 0);
+  $('#lStu').textContent = ok.reduce((a, p) => a + DATA[p.key].s.students, 0);
+  $('#lOn').textContent = ok.length + '/' + PORTALS.length;
+  $('#snap').innerHTML = PORTALS.map(p => {
+    const d = DATA[p.key] || {}, s = d.s || { total: 0, students: 0, byDiv: {} };
+    const vals = p.divisions.map(x => s.byDiv[x] || 0), max = Math.max(1, ...vals), act = vals.filter(v => v).length, frac = act / p.divisions.length;
+    const C = 2 * Math.PI * 34, dl = d.c && d.c.DEADLINE ? new Date(d.c.DEADLINE) : null;
+    return `<button class="sc" data-snap="${p.key}" type="button">
+      <div class="ring"><svg width="84" height="84"><circle cx="42" cy="42" r="34" stroke="#ffffff1f" stroke-width="9" fill="none"/><circle cx="42" cy="42" r="34" stroke="#c8f560" stroke-width="9" fill="none" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="${C * (1 - frac)}" style="transition:stroke-dashoffset .8s"/></svg><div class="rv"><div>${act}/${p.divisions.length}<small>divisions</small></div></div></div>
+      <div style="min-width:0"><h3>${p.icon} ${p.name} <span class="sdot ${!d.ok && d.ok !== false ? '' : d.ok ? 'on' : 'off'}"><i></i>${d.ok ? 'online' : d.ok === false ? 'offline' : '…'}</span></h3>
+        <div class="who">${p.who}</div>
+        <div class="nums"><div><b>${d.ok ? s.total : '–'}</b><small>submissions</small></div><div><b>${d.ok ? s.students : '–'}</b><small>students</small></div><div><b>${d.ok ? daysLeft(d.c) : '–'}</b><small>days left</small></div></div>
+        ${dl ? `<span class="dlpill">deadline ${dl.toLocaleString('en-IN', {day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Kolkata'})}</span>` : ''}
+        <div class="spark">${vals.map(v => `<i class="${v ? '' : 'z'}" style="height:${v / max * 30}px"></i>`).join('')}</div></div>
+      <div class="lock"><b>🔒</b>details after<br>sign in</div></button>`;
+  }).join('');
+  $('#lupd').textContent = 'Live · updated ' + new Date().toLocaleTimeString('en-IN', {hour: '2-digit', minute: '2-digit'}) + ' · refreshes every 2 min';
+  $$('[data-snap]').forEach(c => c.onclick = () => { if (TOKEN) { location.hash = c.dataset.snap; } else { $('#gu').focus(); toast('Sign in to open ' + PORTALS.find(p => p.key === c.dataset.snap).name); } });
+}
 const daysLeft = c => c && c.DEADLINE ? Math.max(0, Math.ceil((new Date(c.DEADLINE) - new Date()) / 864e5)) : '∞';
 const pending = (p, s) => p.divisions.filter(d => !(s.byDiv[d] || 0));
 
 /* ---------- views ---------- */
 function home(){
   const hr = new Date().getHours();
-  $('#greet').textContent = (hr < 12 ? 'Good morning' : hr < 17 ? 'Good afternoon' : 'Good evening') + (NAME ? ', ' + NAME.split(' ')[0] : '');
+  $('#greet').textContent = (hr < 12 ? 'Good morning' : hr < 17 ? 'Good afternoon' : 'Good evening') + (NAME ? ', ' + NAME : '');
   $('#today').textContent = new Date().toLocaleDateString('en-IN', {weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'});
   const tot = PORTALS.reduce((a, p) => a + ((DATA[p.key] && DATA[p.key].s && DATA[p.key].s.total) || 0), 0);
   const on = PORTALS.filter(p => DATA[p.key] && DATA[p.key].ok).length;
@@ -305,7 +386,10 @@ function render(){
 addEventListener('hashchange', render);
 $('#refresh').onclick = () => { toast('Refreshing…'); loadAll(); };
 function enter(){ $('#gate').hidden = true; $('#app').hidden = false; render(); loadAll(); }
-setInterval(() => { if (TOKEN) loadAll(); }, 120000);
+if (!TOKEN) loadAll();
+setInterval(loadAll, 120000);
+setInterval(() => { const t = new Date().toLocaleString('en-IN', {weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit', second: '2-digit'}); $('#lclock').textContent = t; }, 1000);
+landing();
 if (TOKEN) { enter(); post(AUTH_API, { action: 'dashboard', token: TOKEN }).catch(e => { if (/SESSION_EXPIRED/.test(e.message)) signOut('Your session expired. Please sign in again.'); }); }
 })();
 </script>
